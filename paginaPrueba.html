@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/dev/aframe/build/aframe-ar.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina web de ejemplo</title>
+</head>
+Este es un ejemplo de la pagina web para ingresar un codigo qr
+fhhhhhhhhhhhhhhhfhhhhhh
+<body style="margin: 0px; overflow: hidden;">
+
+    <a-scene embedded arjs="debugUIEnabled: false;" vr-mode-ui="enabled: false">
+        <a-marker preset="hiro">
+            <video id="myvideo" crossOrigin="anonymous" src="videoEjemplo.mp4"></video>
+            <a-video src="#myvideo" position="0 0 0" rotation="270 0 0"></a-video>
+
+            <script>
+                var m = document.querySelector("a-marker")
+                m.addEventListener("markerFound", (e) => {
+                    console.log("found")
+                    var v = document.querySelector('#myvideo').play();
+                })
+                m.addEventListener("markerLost", (e) => {
+                    console.log("lost")
+                    var v = document.querySelector('#myvideo').pause();
+                })
+            </script>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+    
+</body>
+</html>
